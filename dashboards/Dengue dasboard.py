@@ -17,7 +17,7 @@ model_choice = st.sidebar.radio("Choose a model:", ["Exploratory Data Analysis (
 
 # 📌 Load Dataset
 st.title("🦠 Dengue Data Analysis & Forecasting")
-dengue_data = pd.read_csv("cleaned_dengue_data.csv")
+dengue_data = pd.read_csv("https://raw.githubusercontent.com//Dragonix230//predictive-analytics//refs//heads//main//data//cleaned_dengue_data.csv")
 
 # Rename incorrect columns
 dengue_data.rename(columns={"2024*_cases": "2024_cases", "2024*_deaths": "2024_deaths"}, inplace=True)
