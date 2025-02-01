@@ -18,9 +18,7 @@ model_choice = st.sidebar.radio("Choose a model:", ["Exploratory Data Analysis (
 # 📌 Load Dataset
 st.title("🦟 Malaria Data Analysis & Forecasting")
 st.subheader("📂 Load and Preprocess Data")
-
-file_path = r"C:\Users\priya\OneDrive\Desktop\chat gpt\cleaned_malaria_data.csv"
-malaria_data = pd.read_csv(file_path)
+malaria_data = pd.read_csv("https://raw.githubusercontent.com//Dragonix230//predictive-analytics//refs//heads//main//data//cleaned_malaria_data.csv")
 
 # Convert data to time series format
 years = ["Cases_2020", "Cases_2021", "Cases_2022", "Cases_2023", "Cases_2024_Upto_Nov"]
