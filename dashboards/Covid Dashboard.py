@@ -9,8 +9,8 @@ from tensorflow.keras.layers import LSTM, Dense, Input
 from sklearn.preprocessing import MinMaxScaler
 
 # Load datasets
-covid_data = pd.read_csv("C:\\Users\\priya\\OneDrive\\Desktop\\chat gpt\\cleaned_covid_data.csv")
-testing_data = pd.read_csv("C:\\Users\\priya\\OneDrive\\Desktop\\chat gpt\\cleaned_testing_data.csv")
+covid_data = pd.read_csv("https://raw.githubusercontent.com//Dragonix230//predictive-analytics//refs//heads//main//data//cleaned_covid_data.csv")
+testing_data = pd.read_csv("https://raw.githubusercontent.com//Dragonix230//predictive-analytics//refs//heads//main//data//cleaned_testing_data.csv")
 
 # Convert date columns to datetime format
 covid_data['datetime'] = pd.to_datetime(covid_data['date'] + ' ' + covid_data['time'], format='%Y-%m-%d %I:%M %p')
