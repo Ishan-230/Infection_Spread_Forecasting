@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from statsmodels.tsa.arima.model import ARIMA
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestRegressor
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
@@ -13,7 +15,7 @@ st.set_page_config(page_title="Dengue Data Analysis & Forecasting", layout="wide
 
 # 📌 Sidebar: Model Selection
 st.sidebar.title("🔍 Model Selection")
-model_choice = st.sidebar.radio("Choose a model:", ["Exploratory Data Analysis (EDA)", "ARIMA Forecast", "LSTM Forecast"])
+model_choice = st.sidebar.radio("Choose a model:", ["Exploratory Data Analysis (EDA)", "ARIMA Forecast", "LSTM Forecast","High-Risk Prediction"])
 
 # 📌 Load Dataset
 st.title("🦠 Dengue Data Analysis & Forecasting")
@@ -139,3 +141,39 @@ if model_choice == "LSTM Forecast":
     st.write(f"📌 *LSTM Forecast for 2025 & 2026 Cases in {state_selected}:*")
     st.write(f"📅 Predicted Cases for 2025: **{int(predictions[0])}**")
     st.write(f"📅 Predicted Cases for 2026: **{int(predictions[1])}**")
+
+    # 📌 High-Risk State Prediction
+elif model_choice == "High-Risk Prediction":
+    st.header("🚨 Predicting Most Affected States")
+
+    # Encode categorical 'states' column
+    label_encoder = LabelEncoder()
+    dengue_data['state_encoded'] = label_encoder.fit_transform(dengue_data['states'])
+
+    # Define features (past cases) and target (latest cases)
+    predictors = ['state_encoded'] + cases_columns[:-1]  # Use past years' data for prediction
+    target_column = cases_columns[-1]  # Latest available year for prediction
+
+    X = dengue_data[predictors]
+    y = dengue_data[target_column]
+
+    # Train the model
+    model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+    model_rf.fit(X, y)
+
+    # Predict risk scores
+    dengue_data['risk_score'] = model_rf.predict(X)
+
+    # Identify high-risk states
+    top_risk_states = dengue_data[['states', 'risk_score']].groupby('states').mean().sort_values(by='risk_score', ascending=False).head(5)
+
+    st.subheader("🔥 Top 5 High-Risk States")
+    st.write(top_risk_states)
+
+    # Plot risk scores
+    fig, ax = plt.subplots(figsize=(10, 5))
+    sns.barplot(x=top_risk_states.index, y=top_risk_states['risk_score'], palette="Reds", ax=ax)
+    ax.set_ylabel("Predicted Risk Score")
+    ax.set_xlabel("States")
+    ax.set_title("Top 5 High-Risk States for Dengue")
+    st.pyplot(fig)
