@@ -25,8 +25,7 @@ cases_columns = ["Cases_2020", "Cases_2021", "Cases_2022", "Cases_2023", "Cases_
 # Sidebar Options
 st.sidebar.title("🔍 Model Selection")
 model_choice = st.sidebar.radio("Choose a model:", ["EDA", "ARIMA Forecast", "LSTM Forecast", "High-Risk Prediction"])
-state_selected = st.sidebar.selectbox("Select a State/Union Territory:", malaria_data['state'].unique())
-forecast_years = st.sidebar.slider("Forecast Years", min_value=1, max_value=5, value=2)
+state_selected = st.sidebar.selectbox("Select a State", malaria_data['state'].unique())
 
 # Prepare Data
 yearly_cases = malaria_data[cases_columns].sum()
@@ -69,8 +68,8 @@ elif model_choice == "ARIMA Forecast":
     else:
         model_arima = ARIMA(state_yearly_cases, order=(1, 1, 1))
         model_arima_fit = model_arima.fit()
-        forecast_arima = model_arima_fit.forecast(steps=forecast_years)
-        future_years = np.arange(2025, 2025 + forecast_years)
+        forecast_arima = model_arima_fit.forecast(steps=2)
+        future_years = np.arange(2025, 2027)
 
         fig, ax = plt.subplots(figsize=(10, 5))
         ax.plot(state_yearly_cases.index, state_yearly_cases.values, label="Actual Cases", marker='o')
@@ -116,21 +115,40 @@ elif model_choice == "LSTM Forecast":
 
     # Display Predictions
     st.write(f"📌 LSTM Forecast:")
-    st.write(f"📅 Predicted Cases for 2025: *{int(lstm_forecast[0])}*")
-    st.write(f"📅 Predicted Cases for 2026: *{int(lstm_forecast[1])}*")
+    st.write(f"📅 Predicted Cases for 2025: **{int(lstm_forecast[0])}**")
+    st.write(f"📅 Predicted Cases for 2026: **{int(lstm_forecast[1])}**")
 
 # 📌 High-Risk State Prediction
 elif model_choice == "High-Risk Prediction":
-    st.header("🚨 Predicting Most Affected States")
-    
+    st.header("🚨 Predicting Most Affected States for Malaria")
+
+    # Encode state names as numerical values
     malaria_data['state_encoded'] = LabelEncoder().fit_transform(malaria_data['state'])
     predictors = ['state_encoded'] + cases_columns
-    X = malaria_data[predictors]
-    y = malaria_data['Cases_2024_Upto_Nov']
 
-    model_rf = RandomForestRegressor()
+    # Define Features (X) and Target Variable (y)
+    X = malaria_data[predictors]
+    y = malaria_data['Cases_2024_Upto_Nov']  # Using 2024 up to Nov data
+
+    # Train Random Forest Model
+    model_rf = RandomForestRegressor(random_state=42, n_estimators=100)
     model_rf.fit(X, y)
+
+    # Predict risk scores for states
     malaria_data['risk_score'] = model_rf.predict(X)
 
+    # Get top 5 high-risk states
     top_risk_states = malaria_data.groupby('state')['risk_score'].mean().sort_values(ascending=False).head(5)
+
+    # Display top high-risk states as a table
+    st.write("### 🔥 Top 5 High-Risk States for Malaria (2024)")
     st.write(top_risk_states)
+
+    # 📊 Visualization - Bar Chart
+    st.subheader("📉 High-Risk States for Malaria")
+    fig, ax = plt.subplots(figsize=(10, 5))
+    sns.barplot(x=top_risk_states.index, y=top_risk_states.values, palette="Reds", ax=ax)
+    ax.set_ylabel("Predicted Risk Score")
+    ax.set_xlabel("State")
+    ax.set_title("Top 5 High-Risk States for Malaria")
+    st.pyplot(fig)
