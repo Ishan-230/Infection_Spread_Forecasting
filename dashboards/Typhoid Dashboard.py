@@ -20,7 +20,7 @@ st.title("🦠 Typhoid Data Analysis & Forecasting")
 st.subheader("📂 Load and Preprocess Data")
 
 # Load dataset from uploaded file
-typhoid_data = pd.read_csv("https://raw.githubusercontent.com//Dragonix230//predictive-analytics//refs//heads//main//data//cleaned_typhoid_data.csv")
+typhoid_data = pd.read_csv("https:/raw.githubusercontent.com/Dragonix230/predictive-analytics/refs/heads/main/data/cleaned_typhoid_data.csv")
 
 # Drop unnecessary columns
 typhoid_data = typhoid_data.drop(columns=["s.no", "name"], errors="ignore")
