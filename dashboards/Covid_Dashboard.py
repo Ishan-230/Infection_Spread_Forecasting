@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from statsmodels.tsa.arima.model import ARIMA
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Input
 from sklearn.preprocessing import MinMaxScaler
@@ -91,18 +90,10 @@ ax.legend()
 st.pyplot(fig)
 
 # Model Selection in Sidebar
-st.sidebar.header("Select Forecast Model")
-model_choice = st.sidebar.radio("Choose a Model:", ["ARIMA", "LSTM"])
+st.sidebar.header("Forecast Model")
 forecast_days = st.sidebar.slider("Forecast Days", min_value=1, max_value=30, value=7)
 
-## ARIMA Model
-#st.header("ARIMA Model Forecast")
-model_arima = ARIMA(time_series, order=(5,1,0))
-model_arima_fit = model_arima.fit()
-forecast_arima = model_arima_fit.forecast(steps=forecast_days)
-
 ## LSTM Model
-#st.header("LSTM Model Forecast")
 scaler = MinMaxScaler(feature_range=(0,1))
 time_series_scaled = scaler.fit_transform(np.array(time_series).reshape(-1,1))
 
@@ -142,13 +133,8 @@ actual_values = time_series.iloc[-len(lstm_predictions):]
 # Forecast Visualization
 st.header("Forecasting Results")
 fig, ax = plt.subplots(figsize=(10, 5))
-if model_choice == "ARIMA":
-    forecast_dates = pd.date_range(time_series.index[-1] + pd.Timedelta(days=1), periods=forecast_days, freq='D')
-    ax.plot(time_series, label="Actual Data")
-    ax.plot(forecast_dates, forecast_arima[:forecast_days], label="ARIMA Forecast", color="red")
-elif model_choice == "LSTM":
-    ax.plot(actual_values.index, actual_values, label="Actual Data")
-    ax.plot(actual_values.index, lstm_predictions, label="LSTM Forecast", color="red")
+ax.plot(actual_values.index, actual_values, label="Actual Data")
+ax.plot(actual_values.index, lstm_predictions, label="LSTM Forecast", color="red")
 ax.legend()
-ax.set_title(f"{model_choice} Forecast for Confirmed Cases")
+ax.set_title("LSTM Forecast for Confirmed Cases")
 st.pyplot(fig)
