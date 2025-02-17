@@ -70,7 +70,7 @@ if model_choice == "Data Insights (EDA)":
 cases_series = pd.Series(state_data[cases_columns].values.flatten(), index=pd.to_datetime(years, format="%Y"))
 
 # 📌 ARIMA Forecast
-if model_choice == "ARIMA Forecast":
+if model_choice == "Forecasting (ARIMA)":
     st.header(f"📈 ARIMA Forecast for Dengue Cases in {state_selected}")
     
     def arima_forecast(series, steps=2):
@@ -94,7 +94,7 @@ if model_choice == "ARIMA Forecast":
     st.write(f"📌 *ARIMA Forecast for 2025-2026 in {state_selected}:*", arima_forecast_cases.values)
 
 # 📌 LSTM Forecast
-if model_choice == "LSTM Forecast":
+if model_choice == "Forecasting (LSTM)":
     st.header(f"📉 LSTM Forecast for Dengue Cases in {state_selected}")
     
     # Prepare data for LSTM
