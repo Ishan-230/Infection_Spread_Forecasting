@@ -37,7 +37,7 @@ state_selected = st.sidebar.selectbox("Select a State", dengue_data['states'].un
 state_data = dengue_data[dengue_data['states'] == state_selected]
 
 # 📌 EDA Section
-if model_choice == "Exploratory Data Analysis (EDA)":
+if model_choice == "Data Insights (EDA)":
     st.header("📊 Exploratory Data Analysis")
     
     # Display dataset
