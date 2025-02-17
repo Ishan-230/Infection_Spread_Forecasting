@@ -35,7 +35,7 @@ else:
 st.success("✅ Data loaded successfully!")
 
 # 📌 Exploratory Data Analysis (EDA)
-if model_choice == "Exploratory Data Analysis (EDA)":
+if model_choice == "Data Insights (EDA)":
     st.header("📊 Exploratory Data Analysis")
     
     # Display dataset
@@ -78,7 +78,7 @@ if model_choice == "Exploratory Data Analysis (EDA)":
 yearly_cases_series = yearly_cases.sort_index()
 
 # 📈 ARIMA Forecast
-if model_choice == "ARIMA Forecast":
+if model_choice == "Forecasting (ARIMA)":
     st.header("📈 ARIMA Forecast for Typhoid Cases")
     
     def arima_forecast(series, steps=2):
@@ -102,7 +102,7 @@ if model_choice == "ARIMA Forecast":
     st.write("📀 ARIMA Forecast for Next 2 Years:", arima_forecast_cases.values)
 
 # 📉 LSTM Forecast
-if model_choice == "LSTM Forecast":
+if model_choice == "Forecasting (LSTM)":
     st.header("📉 LSTM Forecast for Typhoid Cases")
     
     cases = yearly_cases_series.values.reshape(-1, 1)
