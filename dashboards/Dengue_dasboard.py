@@ -15,7 +15,7 @@ st.set_page_config(page_title="Dengue Data Analysis & Forecasting", layout="wide
 
 # 📌 Sidebar: Model Selection
 st.sidebar.title("🔍 Model Selection")
-model_choice = st.sidebar.radio("Choose a model:", ["Exploratory Data Analysis (EDA)", "ARIMA Forecast", "LSTM Forecast","High-Risk Prediction"])
+model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA) ", "Forecasting (LSTM)","High-Risk Prediction"])
 
 # 📌 Load Dataset
 st.title("🦠 Dengue Data Analysis & Forecasting")
