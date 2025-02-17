@@ -24,7 +24,7 @@ cases_columns = ["Cases_2020", "Cases_2021", "Cases_2022", "Cases_2023", "Cases_
 
 # Sidebar Options
 st.sidebar.title("🔍 Model Selection")
-model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA) ", "Forecasting (LSTM)", "High-Risk Prediction"])
+model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA)", "Forecasting (LSTM)", "High-Risk Prediction"])
 state_selected = st.sidebar.selectbox("Select a State", malaria_data['state'].unique())
 
 # Prepare Data
@@ -44,7 +44,7 @@ def plot_time_series(data, title="Malaria Cases Over Years"):
     st.pyplot(fig)
 
 # 📌 Exploratory Data Analysis (EDA)
-if model_choice == "EDA":
+if model_choice == "Data Insights (EDA)":
     st.header("📊 Exploratory Data Analysis")
     st.write(malaria_data.head())
     plot_time_series(yearly_cases, "Total Malaria Cases Per Year")
@@ -57,7 +57,7 @@ if model_choice == "EDA":
         st.pyplot(fig)
 
 # 📌 ARIMA Forecasting
-elif model_choice == "ARIMA Forecast":
+elif model_choice == "Forecasting (ARIMA)":
     st.header(f"📈 ARIMA Forecast for {state_selected}")
 
     state_yearly_cases = state_data[cases_columns].sum()
@@ -79,7 +79,7 @@ elif model_choice == "ARIMA Forecast":
         st.write(f"📌 ARIMA Forecast for {state_selected}:", forecast_arima.values)
 
 # 📌 LSTM Forecasting
-elif model_choice == "LSTM Forecast":
+elif model_choice == "Forecasting (LSTM)":
     st.header("📉 LSTM Forecast for Malaria Cases (2025 & 2026)")
 
     cases = yearly_cases.values.reshape(-1, 1)
