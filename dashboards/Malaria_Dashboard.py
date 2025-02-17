@@ -24,7 +24,7 @@ cases_columns = ["Cases_2020", "Cases_2021", "Cases_2022", "Cases_2023", "Cases_
 
 # Sidebar Options
 st.sidebar.title("🔍 Model Selection")
-model_choice = st.sidebar.radio("Choose a model:", ["EDA", "ARIMA Forecast", "LSTM Forecast", "High-Risk Prediction"])
+model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA) ", "Forecasting (LSTM)", "High-Risk Prediction"])
 state_selected = st.sidebar.selectbox("Select a State", malaria_data['state'].unique())
 
 # Prepare Data
