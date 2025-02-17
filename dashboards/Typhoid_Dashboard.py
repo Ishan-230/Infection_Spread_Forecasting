@@ -13,7 +13,7 @@ st.set_page_config(page_title="Typhoid Data Analysis & Forecasting", layout="wid
 
 # 📌 Sidebar: Model Selection
 st.sidebar.title("🔍 Model Selection")
-model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA)", "Forecasting (LSTM) "])
+model_choice = st.sidebar.radio("Choose a model:", ["Data Insights (EDA)", "Forecasting (ARIMA)", "Forecasting (LSTM)"])
 
 # 📌 Load Dataset
 st.title("🦠 Typhoid Data Analysis & Forecasting")
