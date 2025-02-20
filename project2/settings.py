@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY: Use environment variable for SECRET_KEY
-SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')  # Replace with actual secret in production
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-xvz$8)=5k7087qxmq9sc70@=va0f(dyzbpic33-6quc*j02b')  # Replace with actual secret in production
 
 # SECURITY: Disable debug in production
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
