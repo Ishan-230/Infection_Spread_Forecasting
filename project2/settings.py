@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xvz$8)=5k7087qxmq9sc70@=va0f(dyzbpic33-6quc*j02b#&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["predictive-analytics-v635.onrender.com"]
 
 
 
