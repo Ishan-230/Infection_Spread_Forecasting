@@ -17,7 +17,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # SECURITY: Allow only Render's domain
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
-ALLOWED_HOSTS = ["https://predictive-analytics-mbga.onrender.com/", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["https://predictive-analytics-mbga.onrender.com", "localhost", "127.0.0.1"]
 
 # Application definition
 INSTALLED_APPS = [
