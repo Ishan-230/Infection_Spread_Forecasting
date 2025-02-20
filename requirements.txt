@@ -1,0 +1,12 @@
+Django>=4.0,<5.0  # Ensure compatibility with recent versions
+gunicorn  # WSGI server for deployment
+psycopg2-binary  # PostgreSQL adapter (if using PostgreSQL)
+whitenoise  # Serves static files in production
+dj-database-url  # Helps configure database URLs
+django-environ  # Manage environment variables
+numpy
+pandas
+matplotlib
+scikit-learn
+tensorflow
+streamlit
