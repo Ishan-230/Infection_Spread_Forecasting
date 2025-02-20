@@ -4,6 +4,7 @@ psycopg2-binary  # PostgreSQL adapter (if using PostgreSQL)
 whitenoise  # Serves static files in production
 dj-database-url  # Helps configure database URLs
 django-environ  # Manage environment variables
+python-dotenv
 numpy
 pandas
 matplotlib
