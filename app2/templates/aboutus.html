@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<title>About Us - Infection Spread Forecasting</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    
+    }
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    }
+    h1 {
+    text-align: center;
+    color: #333;
+    }
+    .team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
+    .team-member {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    }
+    .team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    }
+    .team-member h2 {
+    margin: 10px 0;
+    color: #333;
+    }
+    .team-member p {
+      color: #666;
+      font-size: 14px;
+    }
+    .project-description {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      text-align: center;
+    }
+    .project-description h2 {
+      color: #333;
+    }
+    .project-description p {
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>About Us</h1>
+    <div class="project-description">
+      <h2>Infection Spread Forecasting</h2>
+      <p>
+        Our project focuses on predicting the spread of infectious diseases using advanced data analysis and machine learning techniques. By leveraging historical data, real-time inputs, and cloud-based infrastructure, we aim to provide accurate forecasts to help healthcare systems and governments prepare and respond effectively.
+      </p>
+    </div>
+    <div class="team">
+      <!-- Team Member 1 -->
+      <div class="team-member">
+        <img src="{% static 'images/Priyanshu.jpg' %}" alt="Priyanshu Jaiswal">
+        <h2>Priyanshu Jaiswal</h2>
+        <p>Frontend and Backend Developer. <br>
+          Priyanshu is responsible for designing and implementing the core functionality of the application, ensuring seamless integration between the frontend and backend systems.</p>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="team-member">
+        <img src="{% static 'images/PriyanshiP.jpg' %}" alt="Priyanshi Patel">
+        <h2>Priyanshi Patel</h2>
+        <p>Frontend Developer. <br>
+          Priyanshi focuses on creating an intuitive and user-friendly interface, ensuring a smooth and engaging experience for users.</p>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="team-member">
+        <img src="{% static 'images/IshanJ.jpg' %}" alt="Ishan Joshi">
+        <h2>Ishan Joshi</h2>
+        <p>Data Analyst. <br>
+          Ishan analyzes and interprets complex datasets to derive meaningful insights that drive our forecasting models.</p>
+      </div>
+      <!-- Team Member 4 -->
+      <div class="team-member">
+        <img src="{% static 'images/PriyanshiT.jpg' %}" alt="Priyanshi Tomar">
+        <h2>Priyanshi Tomar</h2>
+        <p>Data Analyst.<br>
+          Priyanshi analyzes and interprets complex datasets to derive meaningful insights that drive our forecasting models.</p>
+      </div>
+      <!-- Team Member 5 -->
+      <div class="team-member">
+        <img src="{% static 'images/AditiL.jpg' %}" alt="Aditi Lohiya">
+        <h2>Aditi Lohiya</h2>
+        <p>Aditi crafted our logo, developed engaging content, and curated captivating images and videos for our project. delivering high-quality visuals and compelling narratives that capture the essence of our project.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript can be added here for interactivity if needed
+    console.log("About Us page loaded successfully!");
+  </script>
+
+{% endblock %}

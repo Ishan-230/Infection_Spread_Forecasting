@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<title>Disease Forecasting</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 0;
+        background-color: #f4f4f4;
+        width: 100%;
+    }
+    h1 {
+        color: #333;
+    }
+    h2 {
+        color: #555;
+    }
+    p {
+        color: #666;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        {% comment %} background: #fff; {% endcomment %}
+        padding: 20px;
+        border-radius: 8px;
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .streamlit-link {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 10px 15px;
+        /* background-color: #007bff; */
+        background-image: url("{% static 'images/bannerimg1.jpg'%}");
+        background-size: cover;
+        background-position: center;
+
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .streamlit-link:hover {
+      background-image: url("{% static 'images/bannerimg2.jpg'%}");
+      background-size: cover;
+      background-position: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease-in-out;
+
+    }
+</style>
+<body>
+<div class="container" style="background-color: #fff;">
+    <h1>Disease Forecasting</h1>
+    <p>This page provides information about common diseases like malaria, typhoid, and dengue. You can also explore predictive analytics data for these diseases using the links below.</p>
+
+    <h2>Malaria</h2>
+    <p>Malaria is a life-threatening disease caused by parasites that are transmitted to people through the bites of infected female Anopheles mosquitoes. It is preventable and curable.</p>
+    <a href="https://predictive-analytics-4egxurj9bjvmwthvszo3tk.streamlit.app/" class="streamlit-link" target="_blank">View Malaria Forecasting Data</a>
+
+    <h2>Typhoid</h2>
+    <p>Typhoid fever is a bacterial infection that can spread throughout the body, affecting many organs. Without prompt treatment, it can cause serious complications and can be fatal.</p>
+    <a href="https://predictive-analytics-m6cychvfs5nwywuznoewpz.streamlit.app/" class="streamlit-link" target="_blank">View Typhoid Forecasting Data</a>
+
+    <h2>Dengue</h2>
+    <p>Dengue is a mosquito-borne viral infection causing a severe flu-like illness and, sometimes causing a potentially lethal complication called severe dengue.</p>
+    <a href="https://predictive-analytics-faxnamtrlsdyrfxnmpzg5b.streamlit.app/" class="streamlit-link" target="_blank">View Dengue Forecasting Data</a>
+</div>
+</body>
+{% endblock %}
