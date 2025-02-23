@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xvz$8)=5k7087qxmq9sc70@=va0f(dyzbpic33-6quc*j02b#&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["predictive-analytics-v635.onrender.com"]
 
@@ -126,7 +126,7 @@ if os.path.exists(os.path.join(BASE_DIR, 'static')):
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Use WhiteNoise for serving static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 # Default primary key field type
